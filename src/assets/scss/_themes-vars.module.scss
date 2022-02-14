@@ -1,0 +1,99 @@
+// paper & background
+$paper: #ffffff;
+
+// primary
+$primaryLight: #f2eae0;
+$primaryMain: #fd636b;
+$primaryDark: #b63150;
+$primary200: #fecec0;
+$primary800: #921f44;
+
+// secondary
+$secondaryLight: #f2eae0;
+$secondaryMain: #4a154b;
+$secondaryDark: #2d0a36;
+$secondary200: #eda8dc;
+$secondary800: #21062b;
+
+// success Colors
+$successLight: #d6fedd;
+$success200: #affdc4;
+$successMain: #36eb9f;
+$successDark: #1ba989;
+
+// error
+$errorLight: #f3978b;
+$errorMain: #da3f4a;
+$errorDark: #9c1f3f;
+
+// orange
+$orangeLight: #fef2d0;
+$orangeMain: #fbcc74;
+$orangeDark: #f49419;
+
+// warning
+$warningLight: #fef2d3;
+$warningMain: #fdd291;
+$warningDark: #b68149;
+
+// grey
+$grey50: #fafafa;
+$grey100: #f5f5f5;
+$grey200: #eeeeee;
+$grey300: #e0e0e0;
+$grey500: #9e9e9e;
+$grey600: #757575;
+$grey700: #616161;
+$grey900: #212121;
+
+//-----------------------|| JAVASCRIPT ||-----------------------//
+
+:export {
+    // paper & background
+    paper: $paper;
+
+    // primary
+    primaryLight: $primaryLight;
+    primary200: $primary200;
+    primaryMain: $primaryMain;
+    primaryDark: $primaryDark;
+    primary800: $primary800;
+
+    // secondary
+    secondaryLight: $secondaryLight;
+    secondary200: $secondary200;
+    secondaryMain: $secondaryMain;
+    secondaryDark: $secondaryDark;
+    secondary800: $secondary800;
+
+    // success
+    successLight: $successLight;
+    success200: $success200;
+    successMain: $successMain;
+    successDark: $successDark;
+
+    // error
+    errorLight: $errorLight;
+    errorMain: $errorMain;
+    errorDark: $errorDark;
+
+    // orange
+    orangeLight: $orangeLight;
+    orangeMain: $orangeMain;
+    orangeDark: $orangeDark;
+
+    // warning
+    warningLight: $warningLight;
+    warningMain: $warningMain;
+    warningDark: $warningDark;
+
+    // grey
+    grey50: $grey50;
+    grey100: $grey100;
+    grey200: $grey200;
+    grey300: $grey300;
+    grey500: $grey500;
+    grey600: $grey600;
+    grey700: $grey700;
+    grey900: $grey900;
+}
