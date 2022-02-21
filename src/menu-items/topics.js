@@ -42,11 +42,20 @@ const driver = neo4j.driver(
     neo4j.auth.basic('anonymous', 'anonymous')
 )
 const query = `MATCH (n:Study) RETURN n`
+const query3 = `MATCH (n:Class {label: $param}) RETURN n`
 
 // get Studies Id and Names
 function getAttrs(array,attr) {
     var arr = array.map((item)=>{
         return item._fields[0].properties[attr];
+    })
+    return arr;
+}
+
+// get all Attrs
+function getAllAttrs(array) {
+    var arr = array.map((item)=>{
+        return item._fields[0].properties;
     })
     return arr;
 }
@@ -57,14 +66,14 @@ async function retrieve(parameter, queryText) {
         const result = await session.readTransaction(tx =>
             tx.run(queryText, { param: parameter })
         )
+        // var studiesName = getAttrs(result.records,"label")
+        // var studiesId = getAttrs(result.records,"id")
+        
+        var output = getAllAttrs(result.records);
 
-        var studiesName = getAttrs(result.records,"label")
-        var studiesId = getAttrs(result.records,"id")
-        // setStudyList(studiesName)
-        console.log(studiesName)
-        console.log(studiesId)
-        // debugger
-        return studiesName
+        // console.log(studiesName)
+        // console.log(studiesId)
+        return output
 
     } catch (error) {
         console.log(`unable to execute query. ${error}`)
@@ -78,90 +87,25 @@ const generateTopics = () => {
     let topic = {
         id: 'topics',
         title: 'topics',
-        // caption: 'Pages Caption',
         type: 'group',
         children: [
-            // {
-            //     id: 'songs',
-            //     title: 'Songs',
-            //     type: 'collapse',
-            //     icon: icons['IconPlaylist'],
-            //     children: []
-            // },
-            // {
-            //     id: 'social-network',
-            //     title: 'Social Network',
-            //     type: 'item',
-            //     url: '/node/Person',
-            //     icon: icons['IconSocial'],
-            //     breadcrumbs: false
-            // },
-            // {
-            //     id: 'social-network',
-            //     title: 'Social Network',
-            //     type: 'collapse',
-            //     icon: icons['IconSocial'],
-            //     children: []
-            // },
-            // {
-            //     id: 'organization',
-            //     title: 'Organizations',
-            //     type: 'collapse',
-            //     icon: icons['IconBuildingCommunity'],
-            //     children: []
-            // },
-            // {
-            //     id: 'events',
-            //     title: 'Events',
-            //     type: 'collapse',
-            //     icon: icons['IconCalendarEvent'],
-            //     children: []
-            // },
-            // {
-            //     id: 'genres',
-            //     title: 'Genres',
-            //     type: 'collapse',
-            //     icon: icons['IconArchive'],
-            //     children: []
-            // },
-            // {
-            //     id: 'topics',
-            //     title: 'Topics',
-            //     type: 'collapse',
-            //     icon: icons['IconBulb'],
-            //     children: []
-            // },
-            // {
-            //     id: 'awards',
-            //     title: 'Awards',
-            //     type: 'collapse',
-            //     icon: icons['IconAward'],
-            //     children: []
-            // },
-            // {
-            //     id: 'musical-expressions',
-            //     title: 'Musical Expressions',
-            //     type: 'collapse',
-            //     icon: icons['IconFileMusic'],
-            //     children: []
-            // },
-            // {
-            //     id: 'documents',
-            //     title: 'Documents',
-            //     type: 'collapse',
-            //     icon: icons['IconNotebook'],
-            //     children: []
-            // },
-            // {
-            //     id: 'items',
-            //     title: 'Items',
-            //     type: 'collapse',
-            //     icon: icons['IconFiles'],
-            //     children: []
-            // },
             {
-                id: 'studies',
-                title: 'studies',
+                id: 'LiteratureReview',
+                title: 'LiteratureReview',
+                type: 'collapse',
+                icon: icons['IconNotebook'],
+                children: []
+            },
+            {
+                id: 'Studies',
+                title: 'Studies',
+                type: 'collapse',
+                icon: icons['IconNotebook'],
+                children: []
+            },
+            {
+                id: 'Cause-Effects',
+                title: 'Cause-Effects',
                 type: 'collapse',
                 icon: icons['IconNotebook'],
                 children: []
@@ -170,111 +114,80 @@ const generateTopics = () => {
     };
 
     const getStudies = async () => {
-        var studiesName = await retrieve('Study', query) 
+        var studyInfo = await retrieve('Study', query) 
         console.log(11)
-        console.log(studiesName)
-        // debugger
+        console.log(studyInfo.id)
         // var loopData = [];
-        studiesName.forEach((studiesName) => {
-            let id = studiesName;
-            let label = studiesName;
+        studyInfo.forEach((studyInfo) => {
+            
+            let id = studyInfo.id;
+            let label = studyInfo.label;
+            // debugger
+            topic.children[1].children.push({
+                id: id,
+                title: label,
+                type: 'collapse',
+                // url: `/studies/${id}`,
+                // target: false,
+                // breadcrumbs: false,
+                children: [
+                    {
+                        id: "Summary",
+                        title: "Summary",
+                        type: 'item',
+                        url: `/studies/${id}`,
+                        target: false,
+                        breadcrumbs: false,
+                    },
+                    {
+                        id: "Cause-Effect",
+                        title: "Cause-Effect",
+                        type: 'item',
+                        url: `/node/1`,
+                        target: false,
+                        breadcrumbs: false,
+                    },
+                    {
+                        id: "Key-Cause-Effect",
+                        title: "Key-Cause-Effect",
+                        type: 'item',
+                        url: `/node/1`,
+                        target: false,
+                        breadcrumbs: false,
+                    },
+                    {
+                        id: "Measure",
+                        title: "Measure",
+                        type: 'item',
+                        url: `/node/1`,
+                        target: false,
+                        breadcrumbs: false,
+                    }
+                ]
+
+            });
+        });
+    }
+
+    const getLiteratureReview = async () => {
+        var LiteratureReview = await retrieve('Literature review', query3) 
+
+        LiteratureReview.forEach((literatureReviewName) => {
+            let id = literatureReviewName;
+            let label = literatureReviewName;
             topic.children[0].children.push({
                 id: id,
                 title: label,
                 type: 'item',
-                url: `/node/${id}`,
+                url: `/literatureReview/${id}`,
                 target: false,
                 breadcrumbs: false
             });
         });
     }
 
-    const bCheckLength = async (menuType) =>{
-        const res = await axios.get(`https://chriskhoo.net/ZS/0/${menuType}`);
-        var data = res.data;
-        if (data.length <= 1)
-        {
-            console.log("<=1")
-            console.log(menuType)
-            console.log(data.length)
-            console.log(data)
-            return false
-        }
-        else{
-            console.log(">1")
-            console.log(menuType)
-            console.log(data.length)
-            console.log(data)
-            return false
-        }
-
-    }
-
-    //Generate sub menu
-    const getSubMenu = async (menuType, index) => {
-        var _url = `https://chriskhoo.net/ZS/0/${menuType}`;
-        const res = await axios.get(_url);
-
-        var data = res.data;
-        var loopData = [];
-        // console.log(menuType);
-        // console.log(data);
-        var bPrint = false;
-        var bComplete = false;
-        for (var i = 0; i < data.length; i++) {
-            if (menuType === 'Person' || menuType === 'Event') {
-                if (data[i]._fields[2].properties.type === 'Taxonomy') {
-                    // bPrint= await bCheckLength(data[i]._fields[2].properties.id);
-                    // if(bPrint){
-                        loopData.push(data[i]._fields[2].properties);
-                    // }
-                }
-            } else {
-                // bPrint= await bCheckLength(data[i]._fields[2].properties.id)
-                // if(bPrint){
-                    loopData.push(data[i]._fields[2].properties);
-                // }
-            }
-        }
-        bComplete = true
-
-        if(bComplete){
-            loopData.sort(function (a, b) {
-                if (a.label < b.label) {
-                    return -1;
-                }
-                if (a.label > b.label) {
-                    return 1;
-                }
-                return 0;
-            });
-
-            loopData.forEach((menu) => {
-                let id = menu.id;
-                let label = menu.label;
-                topic.children[index].children.push({
-                    id: id,
-                    title: label,
-                    type: 'item',
-                    url: `/node/${id}`,
-                    target: false,
-                    breadcrumbs: false
-                });
-            });
-        }
-
-    };
-    // getSubMenu('MusicalWork', 0);
-    // // getSubMenu('Person', 1);
-    // getSubMenu('Organization', 2);
-    // getSubMenu('Event', 3);
-    // getSubMenu('CreativeWork', 4);
-    // getSubMenu('Topic', 5);
-    // getSubMenu('Award', 6);
-    // getSubMenu('MusicalExpression', 7);
-    // getSubMenu('Document', 8);
-    // getSubMenu('Item', 9);
     getStudies();
+    getLiteratureReview();
 
 
 

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
 
 // // project imports
-import TotalNodesCard from './TotalNodesCard';
+import SummaryCard from './SummaryCard';
 // import ProfileCard from './ProfileCard';
 
 // // import PopularCard from './PopularCard';
@@ -23,12 +23,12 @@ const driver = neo4j.driver(
     'neo4j+s://fc5b611c.databases.neo4j.io',
     neo4j.auth.basic('anonymous', 'anonymous')
 )
-const query = `MATCH (n:Study) RETURN n`
+const query = `MATCH (n:Study {id: $param}) RETURN n`
 
-// get Studies Id and Names
-function getAttrs(array,attr) {
+// get All Attrs
+function getAllAttrs(array) {
     var arr = array.map((item)=>{
-        return item._fields[0].properties[attr];
+        return item._fields[0].properties;
     })
     return arr;
 }
@@ -39,13 +39,9 @@ async function retrieve(parameter, queryText) {
         const result = await session.readTransaction(tx =>
             tx.run(queryText, { param: parameter })
         )
-
-        var studiesName = getAttrs(result.records,"label")
-        var studiesId = getAttrs(result.records,"id")
-        // setStudyList(studiesName)
-        console.log(studiesName)
-        console.log(studiesId)
-        return studiesName
+        var output = getAllAttrs(result.records)
+        // debugger
+        return output
 
     } catch (error) {
         console.log(`unable to execute query. ${error}`)
@@ -63,19 +59,22 @@ const Studies = () => {
     const [studyList, setStudyList] = useState([]);
 
 
-    const getStudies = async () => {
-        var studiesName = retrieve('Study', query) 
-        setStudyList(studiesName)
-        // var loopData = [];
-        // for (var i = 1; i < data.length; i++) {
-        //     loopData.push(data[i]._fields[2].properties.accessURL);
-        // }
+    const getStudySummary = async () => {
+        // console.log(window.location.href)
+        var thePath = window.location.href
+        const idFromPath = thePath.substring(thePath.lastIndexOf('/') + 1)
+        var studiesSummary = await retrieve(idFromPath, query) 
+        var loopData = []
+        loopData = studiesSummary[0]
+        setStudyList(loopData)
+        // console.log(studyList)
+        // debugger
     }
 
     const [isLoading, setLoading] = useState(true);
     useEffect(() => {
         setLoading(false);
-        getStudies();
+        getStudySummary();
     }, []);
 
     const section = {
@@ -88,7 +87,7 @@ const Studies = () => {
             <Grid item xs={12}>
                 <Grid container spacing={gridSpacing} direction="row">
                     <Grid item xs={12} md={6}>
-                        <TotalNodesCard isLoading={isLoading} essayCount={counter} songCount={songCounter} bioCount={bioCounter} style={section} />
+                        <SummaryCard studyList={studyList} isLoading={isLoading} essayCount={counter} songCount={songCounter} bioCount={bioCounter} style={section} />
                     </Grid>
 
                     <Grid item xs={12} md={6}>
