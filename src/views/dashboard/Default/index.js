@@ -125,6 +125,7 @@ const Dashboard = () => {
                 <Grid container spacing={gridSpacing} direction="row">
                     <Grid item xs={12} md={6}>
                         {/* <TotalNodesCard isLoading={isLoading} essayCount={counter} songCount={songCounter} bioCount={bioCounter} style={section} /> */}
+                        <ProfileCard isLoading={isLoading} style={section} />
                     </Grid>
 
                     <Grid item xs={12} md={6}>
@@ -135,10 +136,12 @@ const Dashboard = () => {
             <Grid item xs={12}>
                 <Grid container spacing={gridSpacing}>
                     <Grid item xs={12} md={6}>
-                        <TotalOrderLineChartCard isLoading={isLoading} songList={songList} style={section} />
+                        {/* <TotalOrderLineChartCard isLoading={isLoading} songList={songList} style={section} /> */}
+                        <ProfileCard isLoading={isLoading} style={section} />
                     </Grid>
                     <Grid item xs={12} md={6}>
                         {/* <TotalGrowthBarChart isLoading={isLoading} photoList={photoList} style={section} /> */}
+                        <ProfileCard isLoading={isLoading} style={section} />
                     </Grid>
                 </Grid>
             </Grid>

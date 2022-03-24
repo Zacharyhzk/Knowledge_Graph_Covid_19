@@ -75,25 +75,25 @@ const ProfileCard = ({ isLoading }) => {
                 <MainCard border={false} className={classes.card} contentClass={classes.content}>
                     <List className={classes.padding}>
                         <ListItem alignItems="center" disableGutters className={classes.padding}>
-                            <ListItemAvatar>
+                            {/* <ListItemAvatar>
                                 <Avatar variant="rounded" className={classes.avatar} src={ZSProfileImage}></Avatar>
-                            </ListItemAvatar>
+                            </ListItemAvatar> */}
                             <ListItemText
                                 className={classes.padding}
                                 sx={{
                                     mt: 0.45,
                                     mb: 0.45
                                 }}
-                                primary={
-                                    <Typography variant="h4" className={classes.primary}>
-                                        Zubir Said
-                                    </Typography>
-                                }
-                                secondary={
-                                    <Typography variant="subtitle2" className={classes.secondary}>
-                                        Zubir Said, was known as the composer of Singapore's National Anthem, Majulah Singapura.
-                                    </Typography>
-                                }
+                                // primary={
+                                //     <Typography variant="h4" className={classes.primary}>
+                                //         Covid-19 Interactive Graph Visualization
+                                //     </Typography>
+                                // }
+                                // secondary={
+                                //     <Typography variant="subtitle2" className={classes.secondary}>
+                                //         Zubir Said, was known as the composer of Singapore's National Anthem, Majulah Singapura.
+                                //     </Typography>
+                                // }
                             />
                         </ListItem>
                     </List>
@@ -108,21 +108,12 @@ const ProfileCard = ({ isLoading }) => {
                                 }}
                                 primary={
                                     <Typography variant="body2" className={classes.secondary}>
-                                        Majulah Singapura: Zubir Said and the National Anthem honours the man whose life and works offer an
-                                        insight into the socio-political structure of Singapore from the late 1950s to 60s. In particular,
-                                        the national anthem Majulah Singapura by Zubir Said (1907-87) can be said to bridge the diverse
-                                        social, cultural, and political landscapes of Singapore during turbulent times. As an early advocate
-                                        for national music, Zubir wrote songs, articles, and delivered speeches on this topic.
+                                        testData   
                                     </Typography>
                                 }
                                 secondary={
                                     <Typography variant="body2" className={classes.secondary}>
-                                        The objective of this online exhibition on the Majulah Singapura is to represent the network of
-                                        concepts to support visualization, associative browsing, and research. Its mindmap-like feature
-                                        helps one make correlations between the various artefacts and events surrounding this work. Zubir’s
-                                        manuscripts and printed scores, official and personal correspondence, as well as interviews on
-                                        various print and online media will help the user build a coherent narrative on the significance of
-                                        the national anthem for its people.
+                                        testData 
                                     </Typography>
                                 }
                             />

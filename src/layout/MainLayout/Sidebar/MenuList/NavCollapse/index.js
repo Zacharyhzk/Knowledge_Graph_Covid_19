@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 // material-ui
@@ -86,6 +87,16 @@ const NavCollapse = ({ menu, level }) => {
         setSelected(!selected ? menu.id : null);
     };
 
+    let listItemProps = {};
+    if(menu.url !== null && menu.url !== undefined ){
+        listItemProps = { component: React.forwardRef((props, ref) => <Link {...props} to={menu.url} />) };
+   
+        if (menu.external) {
+            listItemProps = { component: 'a', href: menu.url };
+        }
+    }   
+
+
     // menu collapse & item
     const menus = menu.children.map((item) => {
         switch (item.type) {
@@ -117,6 +128,7 @@ const NavCollapse = ({ menu, level }) => {
     return (
         <React.Fragment>
             <ListItemButton
+                {...listItemProps}
                 className={level > 1 ? classes.listItemNoBack : classes.listItem}
                 sx={{ borderRadius: customization.borderRadius + 'px' }}
                 selected={selected === menu.id}
