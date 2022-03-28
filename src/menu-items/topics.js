@@ -189,7 +189,7 @@ const generateTopics = () => {
             breadcrumbs: false,
           },
           {
-            id: "Cause-Effect",
+            id: "Cause-Effect2",
             title: "Cause-Effect",
             type: "item",
             url: `/node/1`,
@@ -238,146 +238,39 @@ const generateTopics = () => {
             type: "collapse",
             // type: "item",
             // icon: icons['IconNotebook'],
-            url: `/studies/${id}`,
+            // url: `/studies/${id}`,
             target: false,
             breadcrumbs: false,
-            children: [
-              {
-                id: "Cause-Effect1",
-                title: "Cause-Effect1",
-                type: "item",
-                // icon: icons['IconNotebook'],
-                url: `/studies/${id}`,
-                // url: `/node/1`,
-                target: false,
-                breadcrumbs: false,
-              },
-              {
-                id: "Cause-Effect2",
-                title: "Cause-Effect2",
-                type: "item",
-                // icon: icons['IconNotebook'],
-                url: `/studies/${id}`,
-                // url: `/node/1`,
-                target: false,
-                breadcrumbs: false,
-              },
-              {
-                id: "Cause-Effect3",
-                title: "Cause-Effect3",
-                type: "item",
-                // icon: icons['IconNotebook'],
-                url: `/studies/${id}`,
-                // url: `/node/1`,
-                target: false,
-                breadcrumbs: false,
-              },
-            ],
-          },
-          {
-            id: "Key-Cause-Effect",
-            title: "Key-Cause-Effect",
-            type: "item",
+            request: "request",
             url: `/studies/${id}`,
-            // url: `/node/1`,
-            target: false,
-            breadcrumbs: false,
-          },
-          {
-            id: "Measure",
-            title: "Measure",
-            type: "item",
-            url: `/studies/${id}`,
-            // url: `/node/1`,
-            target: false,
-            breadcrumbs: false,
-          },
-        ],
-      });
-    });
-  };
+            children:[],
+            // onclick:(s)=>{ retrdebugger},
+            // getCauseEffect(),
 
-  const getCauseEffect = async () => {
-    var causeEffect = await retrieve("Tang2020", query4);
-    console.log(11);
-    console.log(causeEffect);
-    causeEffect.forEach((causeEffect) => {
-      let id = causeEffect.id;
-      let label = causeEffect.label;
-      // debugger
-      topic.children[0].children[0].children[1].children.push({
-        id: id,
-        title: label,
-        type: "collapse",
-        // url: `/studies/${id}`,
-        // target: false,
-        // breadcrumbs: false,
-        children: [
-          {
-            id: "Summary",
-            title: "Summary",
-            type: "item",
-            url: `/studies/${id}`,
-            target: false,
-            breadcrumbs: false,
-          },
-          {
-            id: "Cause-Effect",
-            title: "Cause-Effect",
-            type: "item",
-            url: `/node/1`,
-            target: false,
-            breadcrumbs: false,
-          },
-          {
-            id: "Key-Cause-Effect",
-            title: "Key-Cause-Effect",
-            type: "item",
-            url: `/node/1`,
-            target: false,
-            breadcrumbs: false,
-          },
-          {
-            id: "Measure",
-            title: "Measure",
-            type: "item",
-            url: `/node/1`,
-            target: false,
-            breadcrumbs: false,
-          },
-        ],
-      });
-
-      topic.children[1].children.push({
-        id: id,
-        title: label,
-        type: "collapse",
-        // url: `/studies/${id}`,
-        // target: false,
-        // breadcrumbs: false,
-        children: [
-          {
-            id: "Summary",
-            title: "Summary",
-            type: "item",
-            url: `/studies/${id}`,
-            target: false,
-            breadcrumbs: false,
-          },
-          {
-            id: "Cause-Effect",
-            title: "Cause-Effect",
-            type: "item",
-            type: "collapse",
-            // icon: icons['IconNotebook'],
-            url: `/studies/${id}`,
-            // url: `/node/1`,
-            target: false,
-            breadcrumbs: false,
             // children: [
             //   {
             //     id: "Cause-Effect1",
             //     title: "Cause-Effect1",
+            //     type: "item",
+            //     // icon: icons['IconNotebook'],
+            //     url: `/studies/${id}`,
+            //     // url: `/node/1`,
+            //     target: false,
+            //     breadcrumbs: false,
+            //   },
+            //   {
+            //     id: "Cause-Effect2",
+            //     title: "Cause-Effect2",
+            //     type: "item",
+            //     // icon: icons['IconNotebook'],
+            //     url: `/studies/${id}`,
+            //     // url: `/node/1`,
+            //     target: false,
+            //     breadcrumbs: false,
+            //   },
+            //   {
+            //     id: "Cause-Effect3",
+            //     title: "Cause-Effect3",
             //     type: "item",
             //     // icon: icons['IconNotebook'],
             //     url: `/studies/${id}`,
@@ -410,6 +303,122 @@ const generateTopics = () => {
     });
   };
 
+//   const getCauseEffect = async () => {
+//     var thePath = window.location.href;
+//     const idFromPath = thePath.substring(thePath.lastIndexOf("/") + 1);
+//     var causeEffect = await retrieve(idFromPath, query4);
+//     // debugger
+//     console.log(11);
+//     console.log(causeEffect);
+//     causeEffect.forEach((causeEffect) => {
+//       let id = causeEffect.id;
+//       let label = causeEffect.label;
+//       // debugger
+//       topic.children[0].children[0].children[1].children.push({
+//         id: id,
+//         title: label,
+//         type: "collapse",
+//         // url: `/studies/${id}`,
+//         // target: false,
+//         // breadcrumbs: false,
+//         children: [
+//           {
+//             id: "Summary",
+//             title: "Summary",
+//             type: "item",
+//             url: `/studies/${id}`,
+//             target: false,
+//             breadcrumbs: false,
+//           },
+//           {
+//             id: "Cause-Effect",
+//             title: "Cause-Effect",
+//             type: "item",
+//             url: `/node/1`,
+//             target: false,
+//             breadcrumbs: false,
+//           },
+//           {
+//             id: "Key-Cause-Effect",
+//             title: "Key-Cause-Effect",
+//             type: "item",
+//             url: `/node/1`,
+//             target: false,
+//             breadcrumbs: false,
+//           },
+//           {
+//             id: "Measure",
+//             title: "Measure",
+//             type: "item",
+//             url: `/node/1`,
+//             target: false,
+//             breadcrumbs: false,
+//           },
+//         ],
+//       });
+
+//       topic.children[1].children.push({
+//         id: id,
+//         title: label,
+//         type: "collapse",
+//         // url: `/studies/${id}`,
+//         // target: false,
+//         // breadcrumbs: false,
+//         children: [
+//           {
+//             id: "Summary",
+//             title: "Summary",
+//             type: "item",
+//             url: `/studies/${id}`,
+//             target: false,
+//             breadcrumbs: false,
+//           },
+//           {
+//             id: "Cause-Effect",
+//             title: "Cause-Effect",
+//             type: "item",
+//             type: "collapse",
+//             // icon: icons['IconNotebook'],
+//             url: `/studies/${id}`,
+//             // url: `/node/1`,
+//             target: false,
+//             breadcrumbs: false,
+//             // children: [
+//             //   {
+//             //     id: "Cause-Effect1",
+//             //     title: "Cause-Effect1",
+//             //     type: "item",
+//             //     // icon: icons['IconNotebook'],
+//             //     url: `/studies/${id}`,
+//             //     // url: `/node/1`,
+//             //     target: false,
+//             //     breadcrumbs: false,
+//             //   },
+//             // ],
+//           },
+//           {
+//             id: "Key-Cause-Effect",
+//             title: "Key-Cause-Effect",
+//             type: "item",
+//             url: `/studies/${id}`,
+//             // url: `/node/1`,
+//             target: false,
+//             breadcrumbs: false,
+//           },
+//           {
+//             id: "Measure",
+//             title: "Measure",
+//             type: "item",
+//             url: `/studies/${id}`,
+//             // url: `/node/1`,
+//             target: false,
+//             breadcrumbs: false,
+//           },
+//         ],
+//       });
+//     });
+//   };
+
   const getLiteratureReview = async () => {
     var LiteratureReview = await retrieve("Literature review", query3);
 
@@ -428,7 +437,7 @@ const generateTopics = () => {
   };
 
   getStudies();
-  getCauseEffect();
+//   getCauseEffect();
   // getLiteratureReview();
 
   return topic;
