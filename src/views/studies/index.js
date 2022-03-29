@@ -7,6 +7,7 @@ import { Grid } from "@material-ui/core";
 import SummaryCard from "./SummaryCard";
 import CauseEffectCard from "./CauseEffectCard";
 import CauseCard from "./CauseCard";
+import EffectCard from "./EffectCard";
 import KGCard from "./KGCard";
 
 // import ProfileCard from './ProfileCard';
@@ -36,7 +37,8 @@ const driver = neo4j.driver(
 );
 const query = `MATCH (n:Study {id: $param}) RETURN n`;
 const query2 = `MATCH (study {id: $param})-[:cause_effect]-(CE) RETURN CE`;
-const query3 = `MATCH (cause_effect {id: $param })-[:cause]-(CE) RETURN CE`
+const query3 = `MATCH (cause_effect {id: $param })-[:cause]-(CE) RETURN CE`;
+const query4 = `MATCH (cause_effect {id: $param })-[:effect]-(CE) RETURN CE`;
 
 // get All Attrs
 function getAllAttrs(array) {
@@ -62,11 +64,11 @@ async function retrieve(parameter, queryText) {
   }
 }
 
-const Studies = () => {
+const Studies = ({match}) => {
   const [studyList, setStudyList] = useState([]);
   const [causeEffectList, setCauseEffectList] = useState([]);
   const [causeList, setCauseList] = useState([]);
-
+  const [effectList, setEffectList] = useState([]);
 
   const mainlistContext = useContext(MainlistContext);
   const {
@@ -112,6 +114,18 @@ const Studies = () => {
     // debugger
   };
 
+  const getEffect = async () => {
+    var thePath = window.location.href;
+    const idFromPath = thePath.substring(thePath.lastIndexOf("/") + 1);
+    var effectSummary = await retrieve("Becker2005-CauseEffect1", query4);
+    var loopData = [];
+    loopData = effectSummary;
+    setEffectList(loopData);
+    // debugger
+  };
+
+
+
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(false);
@@ -123,7 +137,24 @@ const Studies = () => {
     getCause();
   }, causeList);
   
+  useEffect(() => {
+    getEffect();
+  }, effectList);
 
+
+
+  useEffect(() => {
+    var thePath = window.location.href;
+    const idFromPath = thePath.substring(thePath.lastIndexOf("/") + 1);
+    //supplies the nodeid to src/contexts/mainlist/MainlistState.js
+    // getNodes(idFromPath);
+    // console.log(match)
+    console.log(match)
+    getNodes(match.params.id);
+    // debugger
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
+  
   const section = {
     height: "100%",
     // paddingTop: 5
@@ -154,6 +185,17 @@ const Studies = () => {
           <Grid item xs={12} md={6}>
             <CauseCard
               causeList={causeList}
+              isLoading={isLoading}
+              style={section}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item xs={12}>
+        <Grid container spacing={gridSpacing} direction="row">
+          <Grid item xs={12} md={6}>
+            <EffectCard
+              effectList={effectList}
               isLoading={isLoading}
               style={section}
             />

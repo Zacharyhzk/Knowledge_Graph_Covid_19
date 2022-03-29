@@ -57,7 +57,7 @@ const MainRoutes = () => {
 
                     <Route path="/sample-page" component={SamplePage} />
                     {/* <Route path="/social-network" component={SocialNetwork} /> */}
-                    <Route path="/node/:id" component={Node} />
+                    {/* <Route path="/node/:id" component={Node} /> */}
                     <Route path="/studies/:id" component={Studies} />
                 </Switch>
             </MainLayout>

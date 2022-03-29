@@ -78,9 +78,13 @@ const NavItem = ({ item, level }) => {
         listItemProps = { component: 'a', href: item.url };
     }
 
-    const itemHandler = (id) => {
+    const itemHandler = (id, label) => {
         dispatch({ type: MENU_OPEN, id: id });
         matchesSM && dispatch({ type: SET_MENU, opened: false });
+        if(label = "Cause-Effect-1"){
+
+            // debugger
+        }
     };
 
     // active menu item on page load
@@ -102,7 +106,7 @@ const NavItem = ({ item, level }) => {
             className={level > 1 ? classes.listItemNoBack : classes.listItem}
             sx={{ borderRadius: customization.borderRadius + 'px' }}
             selected={customization.isOpen.findIndex((id) => id === item.id) > -1}
-            onClick={() => itemHandler(item.id)}
+            onClick={() => itemHandler(item.id, item)}
             target={itemTarget}
             style={{ paddingLeft: level * 23 + 'px' }}
         >

@@ -5,6 +5,31 @@ import MainlistReducer from './mainlistReducer';
 import { GET_CARDS, GET_NODES, SET_LOADING } from '../types';
 import { nodeStyle, nodeMainStyle, edgeStyle } from '../../views/node/CytoscapeStyle';
 
+const neo4j = require("neo4j-driver");
+
+const driver = neo4j.driver(
+  "neo4j+s://fc5b611c.databases.neo4j.io",
+  neo4j.auth.basic("anonymous", "anonymous")
+);
+
+const query = "MATCH (study {id: $param})-[re]-(entity) RETURN study,re,entity"
+
+async function retrieve(parameter, queryText) {
+    const session = driver.session({ defaultAccessMode: neo4j.session.READ });
+    try {
+      const result = await session.readTransaction((tx) =>
+        tx.run(queryText, { param: parameter })
+      );
+    //   var output = getAllAttrs(result.records);
+        // debugger
+      return result;
+    } catch (error) {
+      console.log(`unable to execute query. ${error}`);
+    } finally {
+      session.close();
+    }
+  }
+
 const MainlistState = (props) => {
     const initialState = {
         cards: [],
@@ -41,12 +66,17 @@ const MainlistState = (props) => {
     //Get Nodes
     const getNodes = async (nodeid) => {
         setLoading();
-
+        // debugger
         // Fetch data of node (START)
 
-        const res = await axios.get(`https://chriskhoo.net/ZS/0/${nodeid}`);
+        // const res = await axios.get(`https://chriskhoo.net/ZS/0/${nodeid}`);
 
-        var data = res.data;
+        // var thePath = window.location.href;
+        // const idFromPath = thePath.substring(thePath.lastIndexOf("/") + 1);
+        var res = await retrieve(nodeid, query);
+        // debugger
+
+        var data = res.records;
         var loopData = [];
         var groups = [];
         var groupsign ={};

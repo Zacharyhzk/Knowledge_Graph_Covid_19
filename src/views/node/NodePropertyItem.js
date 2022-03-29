@@ -454,7 +454,7 @@ const NodePropertyItem = ({ loading, property }) => {
                         </Grid>
                     </CardContent>
                     <CardActions className={classes.cardAction}>
-                        <Link to={`/node/${property.id}`} style={{ textDecoration: 'none' }}>
+                        <Link to={`/studies/${property.id}`} style={{ textDecoration: 'none' }}>
                             <Button size="small" disableElevation>
                                 {property.label}
                                 <ChevronRightOutlinedIcon />

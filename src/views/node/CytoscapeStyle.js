@@ -29,7 +29,7 @@ export const nodeMainStyle=(label=null)=>{
             "text-wrap" : "wrap",
             "text-overflow-wrap":"whitespace",
             "text-max-width" : "80px",
-            "background-color":"#f2eae0",
+            "background-color":"#e0e0e0",
             "font-size":'10px',
             "compound-sizing-wrt-labels":"include",
             "text-halign":"center",

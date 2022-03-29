@@ -172,7 +172,7 @@ export class CytoscapeObj extends React.Component {
             return(
             <React.Fragment>
                 <Grid container>
-                    <Grid id={"CytoscapeBox"}  itemID={"CytoscapeBox"} sx={{ width: 1/2 }} padding={"10px"}>
+                    <Grid id={"CytoscapeBox"}  bgcolor={'aliceblue'} itemID={"CytoscapeBox"} sx={{ width: 1/2 }} padding={"10px"}>
                         <Typography variant={"h2"}>Knowledge Graph</Typography>
                         {
                             this.state.cy =(
@@ -196,7 +196,7 @@ export class CytoscapeObj extends React.Component {
                             )
                         }
                     </Grid>
-                    <Grid id={"PopupBox"} itemID={"PopupBox"} sx={{ width: 1/2 }} bgcolor={'aliceblue'} padding={"10px"}>
+                    <Grid id={"PopupBox"} itemID={"PopupBox"} sx={{ width: 1/2 }} bgcolor={'white'} padding={"10px"}>
                         <Typography variant={"h2"}>Description</Typography>
                         <Grid id={"PopupDiv"} itemID={"PopupDiv"}>
                         </Grid>
