@@ -22,6 +22,7 @@ const SamplePage = Loadable(lazy(() => import('../views/sample-page')));
 // const SocialNetwork = Loadable(lazy(() => import('../views/social-network')));
 const Node = Loadable(lazy(() => import('../views/node')));
 const Studies = Loadable(lazy(() => import('../views/studies')));
+const LiterReview = Loadable(lazy(() => import('../views/LiteratureReview')));
 
 //-----------------------|| MAIN ROUTING ||-----------------------//
 
@@ -43,6 +44,7 @@ const MainRoutes = () => {
                 // '/social-network',
                 '/node/:id',
                 '/studies/:id',
+                '/literReview',
             ]}
         >
             <MainLayout>
@@ -59,6 +61,7 @@ const MainRoutes = () => {
                     {/* <Route path="/social-network" component={SocialNetwork} /> */}
                     {/* <Route path="/node/:id" component={Node} /> */}
                     <Route path="/studies/:id" component={Studies} />
+                    <Route path="/literReview" component={LiterReview} />
                 </Switch>
             </MainLayout>
         </Route>

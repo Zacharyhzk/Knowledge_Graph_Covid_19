@@ -117,9 +117,12 @@ const generateTopics = () => {
               {
                 id: "Cause-Effects",
                 title: "Cause-Effects",
-                type: "collapse",
+                // type: "collapse",
+                type :"item",
+                url: `/literReview/`,
+                target: false,
+                breadcrumbs: false,
                 icon: icons["IconNotebook"],
-                children: [],
               },
               {
                 id: "Key-Cause-Effects",
