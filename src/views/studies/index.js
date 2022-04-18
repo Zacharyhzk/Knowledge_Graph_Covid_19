@@ -151,7 +151,6 @@ const Studies = ({match}) => {
     // console.log(match)
     console.log(match)
     getNodes(match.params.id);
-    // debugger
     // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
   
