@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     "&:after": {
       content: '""',
       position: "absolute",
-      width: "210px",
+      width: "310px",
       height: "210px",
       background: theme.palette.secondary[800],
       borderRadius: "50%",
