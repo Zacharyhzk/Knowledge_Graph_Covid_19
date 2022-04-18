@@ -15,7 +15,7 @@ const driver = neo4j.driver(
     "neo4j+s://fc5b611c.databases.neo4j.io",
     neo4j.auth.basic("anonymous", "anonymous")
 );
-const query = `MATCH ()-[r: $param]->(RE:Cause_Effect) RETURN RE`;
+const query = `MATCH ()-[r: cause_effect]->(RE:Cause_Effect) RETURN RE`;
 const query2 = `MATCH (study {id: $param})-[:cause_effect]-(CE) RETURN CE`;
 const query3 = `MATCH (cause_effect {id: $param })-[:cause]-(CE) RETURN CE`;
 const query4 = `MATCH (cause_effect {id: $param })-[:effect]-(CE) RETURN CE`;
@@ -28,20 +28,19 @@ function getAllAttrs(array) {
     return arr;
   }
 
-async function retrieve(parameter, queryText) {
+async function retrieve(queryText) {
     const session = driver.session({ defaultAccessMode: neo4j.session.READ });
     try {
         const result = await session.readTransaction((tx) =>    
-        tx.run(queryText, { param: parameter })
+        tx.run(queryText)
         );
         var output = getAllAttrs(result.records);
-       
-        await  console.log(result,"123");
+        // console.log(result,"123");
         // debugger
         return output;
     } catch (error) {
-        debugger
         console.log(`unable to execute query. ${error}`);
+        debugger
     } finally {
         session.close();
     }
@@ -56,7 +55,7 @@ const LiterReview = () => {
     const getCauseEffect = async () => {
         var thePath = window.location.href;
         const idFromPath = thePath.substring(thePath.lastIndexOf("/") + 1);
-        var causeEffectsSummary = await retrieve("cause_effect", query);
+        var causeEffectsSummary = await retrieve(query);
         
         // debugger
         var loopData = [];
