@@ -14,7 +14,8 @@ const driver = neo4j.driver(
 
 const query = "MATCH (study {id: $param})-[re]-(entity) RETURN study,re,entity"
 
-async function retrieve(parameter, queryText) {
+// async function retrieve(parameter, queryText) 
+const retrieve = async (parameter, queryText) =>{
     const session = driver.session({ defaultAccessMode: neo4j.session.READ });
     try {
       const result = await session.readTransaction((tx) =>
@@ -70,11 +71,7 @@ const MainlistState = (props) => {
         // Fetch data of node (START)
 
         // const res = await axios.get(`https://chriskhoo.net/ZS/0/${nodeid}`);
-
-        // var thePath = window.location.href;
-        // const idFromPath = thePath.substring(thePath.lastIndexOf("/") + 1);
         var res = await retrieve(nodeid, query);
-        // debugger
 
         var data = res.records;
         var loopData = [];
@@ -88,7 +85,7 @@ const MainlistState = (props) => {
                 data[i]._fields[2].properties["comment"]=data[i]._fields[2].properties["comment"].replace(/[\u0000-\u001F\u007F-\u009F\ufff0-\uffff]/g, "")
             }
         }
-
+        // debugger
 
         // Fetch data of node (END)
 
