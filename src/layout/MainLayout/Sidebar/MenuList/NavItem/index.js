@@ -81,10 +81,45 @@ const NavItem = ({ item, level }) => {
     const itemHandler = (id, label) => {
         dispatch({ type: MENU_OPEN, id: id });
         matchesSM && dispatch({ type: SET_MENU, opened: false });
-        if(label = "Cause-Effect-1"){
 
+        if(id == "Summary"){
+            localStorage.setItem("Measure","0")
+            localStorage.setItem("Summary","1")
+            localStorage.setItem("Cause-Effect","0")
+            localStorage.setItem("Key-Cause-Effect","0")
             // debugger
+        } else if (id.includes("Cause-Measure")) {
+            localStorage.setItem("Measure","1")
+            localStorage.setItem("Summary","0")
+            localStorage.setItem("Cause-Effect","0")
+            localStorage.setItem("Key-Cause-Effect","0")
+        }else if (id.includes("Effect-Measure")) {
+            localStorage.setItem("Measure","2")
+            localStorage.setItem("Summary","0")
+            localStorage.setItem("Cause-Effect","0")
+            localStorage.setItem("Key-Cause-Effect","0")
         }
+         else if (id.includes("CauseEffect")){
+            localStorage.setItem("Measure","0")
+            localStorage.setItem("Summary","0")
+            localStorage.setItem("Cause-Effect","1")
+            localStorage.setItem("Key-Cause-Effect","0")
+        }  else if (id == "Key-Cause-Effect"){
+            localStorage.setItem("Measure","0")
+            localStorage.setItem("Summary","0")
+            localStorage.setItem("Cause-Effect","0")
+            localStorage.setItem("Key-Cause-Effect","1")
+        } else{
+            localStorage.setItem("Measure","0")
+            localStorage.setItem("Summary","0")
+            localStorage.setItem("Cause-Effect","0")
+            localStorage.setItem("Key-Cause-Effect","0")
+        }
+        // debugger
+        // localStorage.setItem("Measure","0")
+        // localStorage.setItem("Summary","0")
+        // localStorage.setItem("Cause-Effect","0")
+        // localStorage.setItem("Key-Cause-Effect","0")
     };
 
     // active menu item on page load

@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
 
 //===========================|| DASHBOARD DEFAULT - EARNING CARD ||===========================//
 
-const MeasureCard = ({ causeEffectList, isLoading }) => {
+const MeasureCard = ({ measureList, isLoading }) => {
   const classes = useStyles();
   // debugger
   return (
@@ -104,7 +104,7 @@ const MeasureCard = ({ causeEffectList, isLoading }) => {
           className={classes.card}
           contentClass={classes.content}
         >
-          {causeEffectList.map((value, index) => {
+          {measureList.map((value, index) => {
             return (
               <Grid container direction="column">
                 <Grid item sx={{ mb: 1.25 }}>
@@ -115,7 +115,7 @@ const MeasureCard = ({ causeEffectList, isLoading }) => {
                   <Grid container alignItems="center">
                     <Grid item>
                       <Typography className={classes.cardHeading}>
-                        {causeEffectList[index].id}
+                        {measureList[index].id}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -126,13 +126,8 @@ const MeasureCard = ({ causeEffectList, isLoading }) => {
                 <Grid item>
                   <Grid container alignItems="center">
                     <Grid item>
-                      {/* {causeEffectList.map((a) => {
-                    <Typography className={classes.cardHeading}>
-                      {a.label}
-                    </Typography>;
-                  })} */}
                       <Typography className={classes.cardHeading}>
-                        {causeEffectList[index].label}
+                        {measureList[index].label}
                       </Typography>
                     </Grid>
                   </Grid>

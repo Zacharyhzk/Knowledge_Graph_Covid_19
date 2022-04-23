@@ -3,7 +3,7 @@ import React from "react";
 
 // material-ui
 import { makeStyles } from "@material-ui/styles";
-import { Grid, Typography } from "@material-ui/core";
+import { Divider, Grid, Typography } from "@material-ui/core";
 
 // project imports
 import MainCard from "../../ui-component/cards/MainCard";
@@ -126,53 +126,16 @@ const CauseEffectCard = ({ causeEffectList, isLoading }) => {
                 <Grid item>
                   <Grid container alignItems="center">
                     <Grid item>
-                      {/* {causeEffectList.map((a) => {
-                    <Typography className={classes.cardHeading}>
-                      {a.label}
-                    </Typography>;
-                  })} */}
                       <Typography className={classes.cardHeading}>
                         {causeEffectList[index].label}
                       </Typography>
                     </Grid>
                   </Grid>
                 </Grid>
+                  <Divider/>
               </Grid>
             );
           })}
-          {/* <Grid container direction="column">
-            <Grid item sx={{ mb: 1.25 }}>
-              <Typography className={classes.subHeading}>Title</Typography>
-            </Grid>
-
-            <Grid item>
-              <Grid container alignItems="center">
-                <Grid item>
-                  <Typography className={classes.cardHeading}>
-                    {causeEffectList.id}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item sx={{ mb: 1.25 }}>
-              <Typography className={classes.subHeading}>Label</Typography>
-            </Grid>
-            <Grid item>
-              <Grid container alignItems="center">
-                <Grid item>
-                  {causeEffectList.map((a) => {
-                    <Typography className={classes.cardHeading}>
-                      {a.label}
-                    </Typography>;
-                  })} 
-                <Typography className={classes.cardHeading}>
-                      {causeEffectList.label}
-                </Typography>
-                </Grid>
-
-              </Grid>
-            </Grid>
-          </Grid> */}
         </MainCard>
       )}
     </React.Fragment>

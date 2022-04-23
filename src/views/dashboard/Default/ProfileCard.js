@@ -9,8 +9,6 @@ import { Avatar, List, ListItem, ListItemAvatar, ListItemText, Typography } from
 import MainCard from './../../../ui-component/cards/MainCard';
 import TotalIncomeCard from './../../../ui-component/cards/Skeleton/TotalIncomeCard';
 
-// assets
-import ZSProfileImage from './../../../assets/images/zs/zs_profile.jpg';
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -36,33 +34,40 @@ const useStyles = makeStyles((theme) => ({
             height: '210px',
             background: 'linear-gradient(140.9deg, ' + theme.palette.primary[200] + ' -14.02%, rgba(144, 202, 249, 0) 77.58%)',
             borderRadius: '50%',
-            top: '-160px',
-            right: '-130px'
+            // top: '-160px',
+            top: '-125px',
+            right: '-15px',
+            [theme.breakpoints.down('xs')]: {
+                top: '-155px',
+                right: '-70px'
+            }
+            // right: '-130px'
         }
     },
     content: {
-        padding: '16px !important'
+        padding: '20px !important'
     },
-    avatar: {
-        ...theme.typography.commonAvatar,
-        ...theme.typography.largeAvatar,
-        backgroundColor: theme.palette.primary[800],
-        color: '#fff'
-    },
-    primary: {
-        color: '#fff'
-    },
+   
     secondary: {
-        color: theme.palette.primary.light,
+        color: '#fff',
+        fontSize: '1.2rem',
         marginTop: '5px'
     },
     padding: {
         paddingTop: 0,
         paddingBottom: 0
-    }
+    },
+    cardHeading: {
+        color: '#fff',
+        fontSize: '2rem',
+        fontWeight: 500,
+        marginRight: '8px',
+        marginTop: '14px',
+        marginBottom: '6px'
+    },
 }));
 
-//-----------------------|| DASHBOARD - TOTAL INCOME DARK CARD ||-----------------------//
+//-----------------------|| Introduction Card||-----------------------//
 
 const ProfileCard = ({ isLoading }) => {
     const classes = useStyles();
@@ -75,25 +80,14 @@ const ProfileCard = ({ isLoading }) => {
                 <MainCard border={false} className={classes.card} contentClass={classes.content}>
                     <List className={classes.padding}>
                         <ListItem alignItems="center" disableGutters className={classes.padding}>
-                            {/* <ListItemAvatar>
-                                <Avatar variant="rounded" className={classes.avatar} src={ZSProfileImage}></Avatar>
-                            </ListItemAvatar> */}
+                           
                             <ListItemText
                                 className={classes.padding}
                                 sx={{
                                     mt: 0.45,
                                     mb: 0.45
                                 }}
-                                // primary={
-                                //     <Typography variant="h4" className={classes.primary}>
-                                //         Covid-19 Interactive Graph Visualization
-                                //     </Typography>
-                                // }
-                                // secondary={
-                                //     <Typography variant="subtitle2" className={classes.secondary}>
-                                //         Zubir Said, was known as the composer of Singapore's National Anthem, Majulah Singapura.
-                                //     </Typography>
-                                // }
+                        
                             />
                         </ListItem>
                     </List>
@@ -107,15 +101,19 @@ const ProfileCard = ({ isLoading }) => {
                                     mb: 0.45
                                 }}
                                 primary={
-                                    <Typography variant="body2" className={classes.secondary}>
-                                        testData   
+                                    <Typography variant="body2" className={classes.cardHeading}>
+                                        Introduction    
                                     </Typography>
                                 }
                                 secondary={
                                     <Typography variant="body2" className={classes.secondary}>
-                                        testData 
+                                        This knowledge graph interface presents research results and summaries in a text-based interface to help policymakers and healthcare professionals make evidence-based scientific decisions quickly during a pandemic.
+                                        During a pandemic, policymakers and healthcare professionals have to make evidence-based decisions quickly, based on scientific evidence. Research papers related to healthcare are being published at breakneck speed, making it challenging to keep abreast of different types and quality research findings. Lack of direct presence of discoveries in various academic papers becomes the barrier to quick decision making.
+ 
                                     </Typography>
                                 }
+                               
+                              
                             />
                         </ListItem>
                     </List>

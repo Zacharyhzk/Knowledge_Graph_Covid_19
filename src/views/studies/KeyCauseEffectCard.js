@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
 
 //===========================|| DASHBOARD DEFAULT - EARNING CARD ||===========================//
 
-const CauseEffectCard = ({ causeEffectList, isLoading }) => {
+const CauseEffectCard = ({ keyCauseEffectList, isLoading }) => {
   const classes = useStyles();
   // debugger
   return (
@@ -104,49 +104,69 @@ const CauseEffectCard = ({ causeEffectList, isLoading }) => {
           className={classes.card}
           contentClass={classes.content}
         >
-          {causeEffectList.map((value, index) => {
-            return (
-              <Grid container direction="column">
-                <Grid item sx={{ mb: 1.25 }}>
-                  <Typography className={classes.subHeading}>Title</Typography>
-                </Grid>
+          {keyCauseEffectList & (keyCauseEffectList.length !== 0) ? (
+            keyCauseEffectList.map((value, index) => {
+              return (
+                <Grid container direction="column">
+                  <Grid item sx={{ mb: 1.25 }}>
+                    <Typography className={classes.subHeading}>
+                      Title
+                    </Typography>
+                  </Grid>
 
-                <Grid item>
-                  <Grid container alignItems="center">
-                    <Grid item>
-                      <Typography className={classes.cardHeading}>
-                        {causeEffectList[index].id}
-                      </Typography>
+                  <Grid item>
+                    <Grid container alignItems="center">
+                      <Grid item>
+                        <Typography className={classes.cardHeading}>
+                          {keyCauseEffectList[index].id}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item sx={{ mb: 1.25 }}>
+                    <Typography className={classes.subHeading}>
+                      Label
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Grid container alignItems="center">
+                      <Grid item>
+                        <Typography className={classes.cardHeading}>
+                          {keyCauseEffectList[index].label}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item sx={{ mb: 1.25 }}>
+                    <Typography className={classes.subHeading}>
+                      Comment
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Grid container alignItems="center">
+                      <Grid item>
+                        <Typography className={classes.cardHeading}>
+                          {keyCauseEffectList[index].comment}
+                        </Typography>
+                      </Grid>
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item sx={{ mb: 1.25 }}>
-                  <Typography className={classes.subHeading}>Label</Typography>
-                </Grid>
-                <Grid item>
-                  <Grid container alignItems="center">
-                    <Grid item>
-                      <Typography className={classes.cardHeading}>
-                        {causeEffectList[index].label}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item sx={{ mb: 1.25 }}>
-                  <Typography className={classes.subHeading}>Comment</Typography>
-                </Grid>
-                <Grid item>
-                  <Grid container alignItems="center">
-                    <Grid item>
-                      <Typography className={classes.cardHeading}>
-                        {causeEffectList[index].comment}
-                      </Typography>
-                    </Grid>
+              );
+            })
+          ) : (
+            <Grid container direction="column">
+              <Grid item>
+                <Grid container alignItems="center">
+                  <Grid item>
+                    <Typography className={classes.cardHeading}>
+                      This study don't have key-cause-effect.
+                    </Typography>
                   </Grid>
                 </Grid>
               </Grid>
-            );
-          })}
+            </Grid>
+          )}
         </MainCard>
       )}
     </React.Fragment>

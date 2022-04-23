@@ -88,6 +88,8 @@ const driver = neo4j.driver(
   neo4j.auth.basic("anonymous", "anonymous")
 );
 const query = `MATCH (study {id: $param})-[:cause_effect]-(CE) RETURN CE`;
+const query2 = `MATCH ({id: $param})-[:cause_effect]-()-[:cause]-()-[:measure]-(CE) RETURN CE`
+const query3 = `MATCH ({id: $param})-[:cause_effect]-()-[:effect]-()-[:measure]-(CE) RETURN CE`
 
 // get all Attrs
 function getAllAttrs(array) {
@@ -133,17 +135,109 @@ const NavCollapse = ({ menu, level }) => {
           id: id,
           title: label,
           type: "item",
-          // icon: icons['IconNotebook'],
-          url: menu.url,
-          // url: `/node/1`,
+          // type: "collapse",
+          url: `/studies/${id}`,
           target: false,
           breadcrumbs: false,
+          children:[
+            {
+              id: "Cause",
+              title: "Cause",
+              // type: "item",
+              type: "collapse",
+              // url: `/studies/${id}`,
+              target: false,
+              breadcrumbs: false,
+              children:[],
+            },
+            {
+              id: "Effect",
+              title: "Effect",
+              // type: "item",
+              type: "collapse",
+              // url: `/studies/${id}`,
+              target: false,
+              breadcrumbs: false,
+              children:[],
+            }
+          ],
         },
       );
-    //   debugger
+      // debugger
     });
     return menu
   };
+
+  // const getCauseEffectFromMeasureCause = async (menu) => {
+  //   var thePath = window.location.href;
+  //   const idFromPath = thePath.substring(thePath.lastIndexOf("/") + 1);
+  //   var measureCause = await retrieve(idFromPath, query2);
+  //   // debugger;
+  //   measureCause.forEach((measureCause,index) => {
+  //     let id = measureCause.id;
+  //     let label = `Cause-Measure-${index+1}`;
+  //     menu.children.push(
+  //       {
+  //         id: id,
+  //         title: label,
+  //         type: "item",
+  //         // type: "collapse",
+  //         url: `/studies/${idFromPath}`,
+  //         target: false,
+  //         breadcrumbs: false,
+  //         // request: "requestMeasure",
+  //         // target: false,
+  //         // breadcrumbs: false,
+  //         // children:[
+  //         //   {
+  //         //     id: "Cause",
+  //         //     title: "Cause",
+  //         //     // type: "item",
+  //         //     type: "collapse",
+  //         //     // url: `/studies/${id}`,
+  //         //     target: false,
+  //         //     breadcrumbs: false,
+  //         //     children:[],
+  //         //   },
+  //         //   {
+  //         //     id: "Effect",
+  //         //     title: "Effect",
+  //         //     // type: "item",
+  //         //     type: "collapse",
+  //         //     // url: `/studies/${id}`,
+  //         //     target: false,
+  //         //     breadcrumbs: false,
+  //         //     children:[],
+  //         //   }
+  //         // ],
+  //       },
+  //     );
+  //   });
+  //   return menu
+  // };
+
+  // const getCauseEffectFromMeasureEffect = async (menu) => {
+  //   var thePath = window.location.href;
+  //   const idFromPath = thePath.substring(thePath.lastIndexOf("/") + 1);
+  //   var measureCause = await retrieve(idFromPath, query3);
+  //   // debugger;
+  //   measureCause.forEach((measureCause,index) => {
+  //     let id = measureCause.id;
+  //     let label = `Effect-Measure-${index+1}`;
+  //     menu.children.push(
+  //       {
+  //         id: id,
+  //         title: label,
+  //         type: "item",
+  //         // type: "collapse",
+  //         url: `/studies/${id}`,
+  //         target: false,
+  //         breadcrumbs: false,
+  //       },
+  //     );
+  //   });
+  //   return menu
+  // };
 
 //   if (menu.request === "request") {
 //     // console.log(item);
@@ -156,9 +250,15 @@ const NavCollapse = ({ menu, level }) => {
     setSelected(!selected ? menu.id : null);
     if (menu.request === "request" && menu.children.length === 0) {
       console.log(item);
-    //   debugger;
+      // debugger;
       menu = getCauseEffect(menu);
     }
+    // if (menu.request === "requestMeasureCause" && menu.children.length === 0) {
+    //   menu = getCauseEffectFromMeasureCause(menu);
+    // }
+    // if (menu.request === "requestMeasureEffect" && menu.children.length === 0) {
+    //   menu = getCauseEffectFromMeasureEffect(menu);
+    // }
   };
 
 //   useEffect(

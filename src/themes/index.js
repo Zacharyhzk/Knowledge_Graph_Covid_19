@@ -18,6 +18,7 @@ export function theme(customization) {
     let themeOption = {
         colors: color,
         heading: color.grey900,
+        // heading: color.$grey100,
         paper: color.paper,
         backgroundDefault: color.paper,
         background: color.primaryLight,

@@ -12,7 +12,7 @@ import SkeletonEarningCard from '../../../ui-component/cards/Skeleton/EarningCar
 // style constant
 const useStyles = makeStyles((theme) => ({
     card: {
-        backgroundColor: theme.palette.secondary.dark,
+        backgroundColor: theme.palette.primary.dark,
         color: '#fff',
         overflow: 'hidden',
         position: 'relative',
@@ -49,19 +49,7 @@ const useStyles = makeStyles((theme) => ({
     content: {
         padding: '20px !important'
     },
-    avatar: {
-        ...theme.typography.commonAvatar,
-        ...theme.typography.largeAvatar,
-        backgroundColor: theme.palette.secondary[800],
-        marginTop: '8px'
-    },
-    avatarRight: {
-        ...theme.typography.commonAvatar,
-        ...theme.typography.mediumAvatar,
-        backgroundColor: theme.palette.secondary.dark,
-        color: theme.palette.secondary[200],
-        zIndex: 1
-    },
+   
     cardHeading: {
         fontSize: '2.125rem',
         fontWeight: 500,
@@ -72,26 +60,14 @@ const useStyles = makeStyles((theme) => ({
     subHeading: {
         fontSize: '1rem',
         fontWeight: 500,
-        color: theme.palette.secondary[200]
+        color: theme.palette.primary[200]
     },
-    avatarCircle: {
-        // cursor: 'pointer',
-        ...theme.typography.smallAvatar,
-        backgroundColor: theme.palette.secondary[200],
-        color: theme.palette.secondary.dark
-    },
-    circleIcon: {
-        transform: 'rotate3d(1, 1, 1, 45deg)'
-    },
-    menuItem: {
-        marginRight: '14px',
-        fontSize: '1.25rem'
-    }
+   
 }));
 
-//===========================|| DASHBOARD DEFAULT - EARNING CARD ||===========================//
+//===========================|| Summary Card ||===========================//
 
-const TotalNodesCard = ({ isLoading, essayCount, songCount, bioCount }) => {
+const DatabaseSummaryCard = ({ isLoading, literatureCounter, summaryCounter, causeEffectCounter}) => {
     const classes = useStyles();
 
     return (
@@ -105,34 +81,34 @@ const TotalNodesCard = ({ isLoading, essayCount, songCount, bioCount }) => {
                     <Grid item>
                             <Grid container alignItems="center">
                                 <Grid item>
-                                    <Typography className={classes.cardHeading}>{songCount}</Typography>
+                                    <Typography className={classes.cardHeading}>{summaryCounter}</Typography>
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Grid item sx={{ mb: 1.25 }}>
-                            <Typography className={classes.subHeading}>Total Songs</Typography>
+                            <Typography className={classes.subHeading}>Total Studies</Typography>
                         </Grid>
 
                         <Grid item>
                             <Grid container alignItems="center">
                                 <Grid item>
-                                    <Typography className={classes.cardHeading}>{essayCount}</Typography>
+                                    <Typography className={classes.cardHeading}>{literatureCounter}</Typography>
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Grid item sx={{ mb: 1.25 }}>
-                            <Typography className={classes.subHeading}>Essays</Typography>
+                            <Typography className={classes.subHeading}>Total Literature Review</Typography>
                         </Grid>
 
                         <Grid item>
                             <Grid container alignItems="center">
                                 <Grid item>
-                                    <Typography className={classes.cardHeading}>{bioCount}</Typography>
+                                    <Typography className={classes.cardHeading}>{causeEffectCounter}</Typography>
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Grid item sx={{ mb: 1.25 }}>
-                            <Typography className={classes.subHeading}>Biographies</Typography>
+                            <Typography className={classes.subHeading}>Total Cause-Effects</Typography>
                         </Grid>
                     </Grid>
                 </MainCard>
@@ -141,8 +117,8 @@ const TotalNodesCard = ({ isLoading, essayCount, songCount, bioCount }) => {
     );
 };
 
-TotalNodesCard.propTypes = {
+DatabaseSummaryCard.propTypes = {
     isLoading: PropTypes.bool
 };
 
-export default TotalNodesCard;
+export default DatabaseSummaryCard;

@@ -3,7 +3,7 @@ import React from "react";
 
 // material-ui
 import { makeStyles } from "@material-ui/styles";
-import { Grid, Typography } from "@material-ui/core";
+import { Divider, Grid, Typography } from "@material-ui/core";
 
 // project imports
 import MainCard from "../../ui-component/cards/MainCard";
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
 
 //===========================|| DASHBOARD DEFAULT - EARNING CARD ||===========================//
 
-const SummaryCard = ({ studyList, isLoading }) => {
+const CauseEffectCard = ({ measureList, isLoading }) => {
   const classes = useStyles();
   // debugger
   return (
@@ -104,9 +104,9 @@ const SummaryCard = ({ studyList, isLoading }) => {
           className={classes.card}
           contentClass={classes.content}
         >
-          <Grid container direction="column">
-            {studyList.label ? (
-              <>
+          {measureList.map((value, index) => {
+            return (
+              <Grid container direction="column">
                 <Grid item sx={{ mb: 1.25 }}>
                   <Typography className={classes.subHeading}>Title</Typography>
                 </Grid>
@@ -115,102 +115,47 @@ const SummaryCard = ({ studyList, isLoading }) => {
                   <Grid container alignItems="center">
                     <Grid item>
                       <Typography className={classes.cardHeading}>
-                        {studyList.label}
+                        {measureList[index].id}
                       </Typography>
                     </Grid>
                   </Grid>
                 </Grid>
-              </>
-            ) : null}
-
-            {studyList.objectives ? (
-              <>
                 <Grid item sx={{ mb: 1.25 }}>
-                  <Typography className={classes.subHeading}>
-                    Objective
-                  </Typography>
+                  <Typography className={classes.subHeading}>Label</Typography>
                 </Grid>
-
                 <Grid item>
                   <Grid container alignItems="center">
                     <Grid item>
                       <Typography className={classes.cardHeading}>
-                        {studyList.objectives}
+                        {measureList[index].label}
                       </Typography>
                     </Grid>
                   </Grid>
                 </Grid>
-              </>
-            ) : null}
-
-            {studyList.citation ? (
-              <>
                 <Grid item sx={{ mb: 1.25 }}>
-                  <Typography className={classes.subHeading}>
-                    Citation
-                  </Typography>
+                  <Typography className={classes.subHeading}>Value</Typography>
                 </Grid>
-
                 <Grid item>
                   <Grid container alignItems="center">
                     <Grid item>
                       <Typography className={classes.cardHeading}>
-                        {studyList.citation}
+                        {measureList[index].numericValue}
                       </Typography>
                     </Grid>
                   </Grid>
                 </Grid>
-              </>
-            ) : null}
-
-            {studyList.comment ? (
-              <>
-                <Grid item sx={{ mb: 1.25 }}>
-                  <Typography className={classes.subHeading}>
-                    Comment
-                  </Typography>
-                </Grid>
-
-                <Grid item>
-                  <Grid container alignItems="center">
-                    <Grid item>
-                      <Typography className={classes.cardHeading}>
-                        {studyList.comment}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </>
-            ) : null}
-
-            {studyList.study_method_desc ? (
-              <>
-                <Grid item sx={{ mb: 1.25 }}>
-                  <Typography className={classes.subHeading}>
-                    Study Method Description
-                  </Typography>
-                </Grid>
-
-                <Grid item>
-                  <Grid container alignItems="center">
-                    <Grid item>
-                      <Typography className={classes.cardHeading}>
-                        {studyList.study_method_desc}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </>
-            ) : null}
-          </Grid>
+                <Divider></Divider>
+              </Grid>
+            );
+          })}
         </MainCard>
       )}
     </React.Fragment>
   );
 };
 
-SummaryCard.propTypes = {
+CauseEffectCard.propTypes = {
   isLoading: PropTypes.bool,
 };
 
-export default SummaryCard;
+export default CauseEffectCard;

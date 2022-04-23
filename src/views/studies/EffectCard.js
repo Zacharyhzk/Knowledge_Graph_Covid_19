@@ -12,40 +12,31 @@ import SkeletonEarningCard from "../../ui-component/cards/Skeleton/EarningCard";
 // style constant
 const useStyles = makeStyles((theme) => ({
   card: {
-    backgroundColor: theme.palette.secondary.dark,
-    color: "#fff",
-    overflow: "hidden",
-    position: "relative",
-    "&:after": {
-      content: '""',
-      position: "absolute",
-      width: "210px",
-      height: "210px",
-      background: theme.palette.secondary[800],
-      borderRadius: "50%",
-      top: "-85px",
-      right: "-95px",
-      [theme.breakpoints.down("xs")]: {
-        top: "-105px",
-        right: "-140px",
-      },
+    backgroundColor: theme.palette.warning.dark,
+    color: theme.palette.primary.light,
+    overflow: 'hidden',
+    position: 'relative',
+    '&:after': {
+        content: '""',
+        position: 'absolute',
+        width: '210px',
+        height: '210px',
+        background: 'linear-gradient(210.04deg, ' + theme.palette.primary[200] + ' -50.94%, rgba(144, 202, 249, 0) 83.49%)',
+        borderRadius: '50%',
+        top: '-30px',
+        right: '-180px'
     },
-    "&:before": {
-      content: '""',
-      position: "absolute",
-      width: "210px",
-      height: "210px",
-      background: theme.palette.secondary[800],
-      borderRadius: "50%",
-      top: "-125px",
-      right: "-15px",
-      opacity: 0.5,
-      [theme.breakpoints.down("xs")]: {
-        top: "-155px",
-        right: "-70px",
-      },
-    },
-  },
+    '&:before': {
+        content: '""',
+        position: 'absolute',
+        width: '210px',
+        height: '210px',
+        background: 'linear-gradient(140.9deg, ' + theme.palette.primary[200] + ' -14.02%, rgba(144, 202, 249, 0) 77.58%)',
+        borderRadius: '50%',
+        top: '-160px',
+        right: '-130px'
+    }
+},
   content: {
     padding: "20px !important",
   },
@@ -68,11 +59,13 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "8px",
     marginTop: "0px",
     marginBottom: "6px",
+    color: "black !important",
   },
   subHeading: {
     fontSize: "1rem",
     fontWeight: 500,
     color: theme.palette.secondary[200],
+    color: "#7d0909 !important",
   },
   avatarCircle: {
     // cursor: 'pointer',
@@ -103,6 +96,7 @@ const EffectCard = ({ effectList, isLoading }) => {
           border={false}
           className={classes.card}
           contentClass={classes.content}
+          title="Effect"
         >
           {effectList.map((value, index) => {
             return (

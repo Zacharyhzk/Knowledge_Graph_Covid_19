@@ -3,7 +3,7 @@ import React from "react";
 
 // material-ui
 import { makeStyles } from "@material-ui/styles";
-import { Grid, Typography } from "@material-ui/core";
+import { Divider, Grid, Typography } from "@material-ui/core";
 
 // project imports
 import MainCard from "../../ui-component/cards/MainCard";
@@ -126,11 +126,6 @@ const KeyCauseEffectCard = ({ causeEffectList, isLoading }) => {
                 <Grid item>
                   <Grid container alignItems="center">
                     <Grid item>
-                      {/* {causeEffectList.map((a) => {
-                    <Typography className={classes.cardHeading}>
-                      {a.label}
-                    </Typography>;
-                  })} */}
                       <Typography className={classes.cardHeading}>
                         {causeEffectList[index].label}
                       </Typography>
@@ -140,7 +135,6 @@ const KeyCauseEffectCard = ({ causeEffectList, isLoading }) => {
               </Grid>
             );
           })}
-          
         </MainCard>
       )}
     </React.Fragment>
