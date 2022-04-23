@@ -3,7 +3,7 @@ import React from "react";
 
 // material-ui
 import { makeStyles } from "@material-ui/styles";
-import { Grid, Typography } from "@material-ui/core";
+import { Divider, Grid, Typography } from "@material-ui/core";
 
 // project imports
 import MainCard from "../../ui-component/cards/MainCard";
@@ -132,6 +132,7 @@ const MeasureCard = ({ measureList, isLoading }) => {
                     </Grid>
                   </Grid>
                 </Grid>
+                <Divider/>
               </Grid>
             );
           })}
