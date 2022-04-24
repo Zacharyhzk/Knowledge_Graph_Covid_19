@@ -258,7 +258,7 @@ export class DraggableDialog extends React.Component {
                                         </Grid>
                                     ))}
                             </Grid>
-                            <Grid>
+                            {/* <Grid>
                                 <Button
                                     size="small"
                                     disableElevation
@@ -269,7 +269,7 @@ export class DraggableDialog extends React.Component {
                                     <Typography variant="subtitle2">{this.state.label}</Typography>
                                     <ChevronRightOutlinedIcon />
                                 </Button>
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                     </Draggable>
                 )}

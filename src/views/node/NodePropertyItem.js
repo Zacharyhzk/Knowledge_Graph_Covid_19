@@ -153,80 +153,80 @@ const NodePropertyItem = ({ loading, property }) => {
     };
 
     //Render link text based on the accessURL endpoint
-    const showAccessURL = (link) => {
-        if (link.includes("theonlinecitizen.com")){
-            return(
-                <br>
-                </br>
-            );
-        } else if (link.includes('pdf')){
-            return (
-                <Button
-                    variant="contained"
-                    size="medium"
-                    color="secondary"
-                    className={classes.margin}
-                    disableElevation
-                    startIcon={<PictureAsPdf />}
-                >
-                    PDF
-                </Button>
-            );
-        } else if (link.includes('jpg') || link.includes('png')) {
-            return (
-                <Card className={classes.root}>
-                    <CardActionArea>
-                        <CardMedia component="img" width="auto" image={link} />
-                    </CardActionArea>
-                    <CardActions className={classes.cardActionImage}>
-                        <Button
-                            variant="contained"
-                            size="medium"
-                            color="secondary"
-                            className={classes.margin}
-                            disableElevation
-                            startIcon={<Image />}
-                        >
-                            Image Source
-                        </Button>
-                    </CardActions>
-                </Card>
-            );
-        } else if (link.includes('youtube')) {
-            return (
-                <Card className={classes.root}>
-                    <CardActionArea>
-                        <ReactPlayer url={link} width="auto" controls="true" />
-                    </CardActionArea>
-                    <CardActions className={classes.cardActionImage}>
-                        <Button
-                            variant="contained"
-                            size="medium"
-                            color="secondary"
-                            className={classes.margin}
-                            disableElevation
-                            startIcon={<Movie />}
-                        >
-                            Video
-                        </Button>
-                    </CardActions>
-                </Card>
-            );
-        } else {
-            return (
-                <Button
-                    variant="contained"
-                    size="medium"
-                    color="secondary"
-                    className={classes.margin}
-                    disableElevation
-                    startIcon={<Launch />}
-                >
-                    Webpage
-                </Button>
-            );
-        }
-    };
+    // const showAccessURL = (link) => {
+    //     if (link.includes("theonlinecitizen.com")){
+    //         return(
+    //             <br>
+    //             </br>
+    //         );
+    //     } else if (link.includes('pdf')){
+    //         return (
+    //             <Button
+    //                 variant="contained"
+    //                 size="medium"
+    //                 color="secondary"
+    //                 className={classes.margin}
+    //                 disableElevation
+    //                 startIcon={<PictureAsPdf />}
+    //             >
+    //                 PDF
+    //             </Button>
+    //         );
+    //     } else if (link.includes('jpg') || link.includes('png')) {
+    //         return (
+    //             <Card className={classes.root}>
+    //                 <CardActionArea>
+    //                     <CardMedia component="img" width="auto" image={link} />
+    //                 </CardActionArea>
+    //                 <CardActions className={classes.cardActionImage}>
+    //                     <Button
+    //                         variant="contained"
+    //                         size="medium"
+    //                         color="secondary"
+    //                         className={classes.margin}
+    //                         disableElevation
+    //                         startIcon={<Image />}
+    //                     >
+    //                         Image Source
+    //                     </Button>
+    //                 </CardActions>
+    //             </Card>
+    //         );
+    //     } else if (link.includes('youtube')) {
+    //         return (
+    //             <Card className={classes.root}>
+    //                 <CardActionArea>
+    //                     <ReactPlayer url={link} width="auto" controls="true" />
+    //                 </CardActionArea>
+    //                 <CardActions className={classes.cardActionImage}>
+    //                     <Button
+    //                         variant="contained"
+    //                         size="medium"
+    //                         color="secondary"
+    //                         className={classes.margin}
+    //                         disableElevation
+    //                         startIcon={<Movie />}
+    //                     >
+    //                         Video
+    //                     </Button>
+    //                 </CardActions>
+    //             </Card>
+    //         );
+    //     } else {
+    //         return (
+    //             <Button
+    //                 variant="contained"
+    //                 size="medium"
+    //                 color="secondary"
+    //                 className={classes.margin}
+    //                 disableElevation
+    //                 startIcon={<Launch />}
+    //             >
+    //                 Webpage
+    //             </Button>
+    //         );
+    //     }
+    // };
     return (
         <React.Fragment>
             {loading ? (
@@ -434,7 +434,7 @@ const NodePropertyItem = ({ loading, property }) => {
                                     </Fragment>
                                 )}
 
-                                {property.accessURL && (
+                                {/* {property.accessURL && (
                                     <Fragment>
                                         <Grid container alignItems="center" justifyContent="space-between" direction="row" spacing={2}>
                                             {property.accessURL.map((link, index) => (
@@ -449,7 +449,7 @@ const NodePropertyItem = ({ loading, property }) => {
                                             ))}
                                         </Grid>
                                     </Fragment>
-                                )}
+                                )} */}
                             </Grid>
                         </Grid>
                     </CardContent>

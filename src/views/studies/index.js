@@ -112,8 +112,6 @@ const Studies = ({ match }) => {
     var loopData = [];
     loopData = studiesSummary[0];
     setStudyList(loopData);
-    // console.log(studyList)
-    // debugger
   };
 
   const getCauseEffect = async () => {
@@ -168,7 +166,6 @@ const Studies = ({ match }) => {
   useEffect(() => {
     setLoading(false);
     getStudySummary();
-    // console.log(match,"12333")
   }, []);
 
   useEffect(() => {
@@ -196,24 +193,10 @@ const Studies = ({ match }) => {
   }, measureEffectList);
 
   useEffect(() => {
-    // var thePath = window.location.href;
-    // const idFromPath = thePath.substring(thePath.lastIndexOf("/") + 1);
-    //supplies the nodeid to src/contexts/mainlist/MainlistState.js
-    // getNodes(idFromPath);
-    // console.log(match)
     const fetchData = async () => {
       await getNodes(match.params.id);
     };
-
     fetchData();
-    console.log(mainlistContext, "3244");
-    // debugger
-    console.log(match);
-    // getNodes(match.params.id);
-    // getNodes(match.params.id);
-    console.log("213");
-    // debugger;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const section = {
@@ -288,15 +271,6 @@ const Studies = ({ match }) => {
                     />
                   </Grid>
                 ) : null}
-                {/* {keyCauseEffectList &  keyCauseEffectList.length !== 0 ? (
-                  <Grid item xs={12} md={12}>
-                    <KeyCauseEffectCard
-                      keyCauseEffectList={keyCauseEffectList}
-                      isLoading={isLoading}
-                      style={section}
-                    />
-                  </Grid>
-                ) : null} */}
                 {keyCauseEffectLoc === "1" ? (
                   <Grid item xs={12} md={12}>
                     <KeyCauseEffectCard
@@ -306,30 +280,8 @@ const Studies = ({ match }) => {
                     />
                   </Grid>
                 ) : null}
-                {/* {keyCauseEffectLoc == "1" ? (
-                  <Grid item xs={12} md={12}>
-                    <CauseCard
-                      causeList={causeList}
-                      isLoading={isLoading}
-                      style={section}
-                    />
-                  </Grid>
-                ) : null} */}
               </Grid>
             </Grid>
-            {/* <Grid item xs={12}>
-              <Grid container spacing={gridSpacing} direction="row">
-                {keyCauseEffectLoc == "1" ? (
-                  <Grid item xs={12} md={12}>
-                    <EffectCard
-                      effectList={effectList}
-                      isLoading={isLoading}
-                      style={section}
-                    />
-                  </Grid>
-                ) : null}
-              </Grid>
-            </Grid> */}
           </Grid>
         </TabPanel>
         <TabPanel value="1">
