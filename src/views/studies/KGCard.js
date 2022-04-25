@@ -124,11 +124,6 @@ const KGCard = ({ causeEffectList, isLoading }) => {
             <Grid item>
               <Grid container alignItems="center">
                 <Grid item>
-                  {/* {causeEffectList.map((a) => {
-                    <Typography className={classes.cardHeading}>
-                      {a.label}
-                    </Typography>;
-                  })} */}
                 <Typography className={classes.cardHeading}>
                       {causeEffectList.label}
                 </Typography>

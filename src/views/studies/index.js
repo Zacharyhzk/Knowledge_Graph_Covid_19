@@ -21,13 +21,6 @@ import {
   CardActions,
 } from "@material-ui/core";
 import MainCard from "../../ui-component/cards/MainCard";
-// import ProfileCard from './ProfileCard';
-
-// // import PopularCard from './PopularCard';
-// import TotalOrderLineChartCard from './TotalOrderLineChartCard';
-// // import TotalIncomeDarkCard from './TotalIncomeDarkCard';
-// // import TotalIncomeLightCard from './TotalIncomeLightCard';
-// import TotalGrowthBarChart from './TotalGrowthBarChart';
 import { gridSpacing } from "./../../store/constant";
 
 //Cytoscape components
