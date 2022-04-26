@@ -310,23 +310,6 @@ const generateTopics = () => {
     });
   };
 
-  const getLiteratureReview = async () => {
-    var LiteratureReview = await retrieve("Literature review", query3);
-
-    LiteratureReview.forEach((literatureReviewName) => {
-      let id = literatureReviewName;
-      let label = literatureReviewName;
-      topic.children[0].children.push({
-        id: id,
-        title: label,
-        type: "item",
-        url: `/literatureReview/${id}`,
-        target: false,
-        breadcrumbs: false,
-      });
-    });
-  };
-
   getStudies();
 
   return topic;
