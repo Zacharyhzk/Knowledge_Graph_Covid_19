@@ -328,8 +328,6 @@ const generateTopics = () => {
   };
 
   getStudies();
-//   getCauseEffect();
-  // getLiteratureReview();
 
   return topic;
 };
