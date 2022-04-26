@@ -167,7 +167,6 @@ const generateTopics = () => {
 
   const getStudies = async () => {
     var studyInfo = await retrieve("Study", query);
-    console.log(11);
     console.log(studyInfo.id);
     // var loopData = [];
     studyInfo.forEach((studyInfo) => {
