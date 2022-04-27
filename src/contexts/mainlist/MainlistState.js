@@ -21,8 +21,6 @@ const retrieve = async (parameter, queryText) =>{
       const result = await session.readTransaction((tx) =>
         tx.run(queryText, { param: parameter })
       );
-    //   var output = getAllAttrs(result.records);
-        // debugger
       return result;
     } catch (error) {
       console.log(`unable to execute query. ${error}`);
