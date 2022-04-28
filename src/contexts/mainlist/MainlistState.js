@@ -65,7 +65,6 @@ const MainlistState = (props) => {
     //Get Nodes
     const getNodes = async (nodeid) => {
         setLoading();
-        // debugger
         // Fetch data of node (START)
 
         // const res = await axios.get(`https://chriskhoo.net/ZS/0/${nodeid}`);
