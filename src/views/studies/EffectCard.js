@@ -86,7 +86,6 @@ const useStyles = makeStyles((theme) => ({
 
 const EffectCard = ({ effectList, isLoading }) => {
   const classes = useStyles();
-  // debugger
   return (
     <React.Fragment>
       {isLoading ? (
