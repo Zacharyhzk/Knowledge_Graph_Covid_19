@@ -82,7 +82,6 @@ const MainlistState = (props) => {
                 data[i]._fields[2].properties["comment"]=data[i]._fields[2].properties["comment"].replace(/[\u0000-\u001F\u007F-\u009F\ufff0-\uffff]/g, "")
             }
         }
-        // debugger
 
         // Fetch data of node (END)
 
